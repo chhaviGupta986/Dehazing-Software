@@ -3,7 +3,7 @@ Open-source software designed to enhance the visibility of images and videos by 
 _________________________________________________________________________________________________________________________
 **Installation Steps-** 
 _________________________________________________________________________________________________________________________
-   1) Navigate to the Releases section on the right side of this readme.
+   1) Navigate to the Releases section on the right side of this readme, click on Realtime Dehazing Software or click [here](https://github.com/chhaviGupta986/Dehazing-Software/releases/tag/v1.0.0) directly.
    2) Scroll down to the Assets section.
    3) Locate three download links. Click on the first link (Installer.exe).
    4) If the download is blocked, you might see a message similar to this:
