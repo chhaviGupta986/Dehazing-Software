@@ -1,7 +1,7 @@
 # Dehazing-Software
-**Open-source software designed to enhance the visibility of images and videos by reducing atmospheric haze. **
-
-**1. Installation:**
+<h2>Open-source software designed to enhance the visibility of images and videos by reducing atmospheric haze.<h2>
+<h1>1. Installation:</h1>
+<h3></h3>
    1) Navigate to the Releases section on the right side of this readme.
    2) Scroll down to the Assets section.
    3) Locate three download links. Click on the first link (Installer.exe).
