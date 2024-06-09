@@ -1,5 +1,5 @@
 # Real-time Dehazing Software
-Open-source software designed to enhance the visibility of images and videos by reducing atmospheric haze.![background](https://github.com/chhaviGupta986/Dehazing-Software/assets/94625954/e5c90aaf-4a9c-4fc4-95bc-54f84f554e43)<h5>
+Windows software designed to enhance the visibility of images and videos by reducing atmospheric haze.![background](https://github.com/chhaviGupta986/Dehazing-Software/assets/94625954/e5c90aaf-4a9c-4fc4-95bc-54f84f554e43)<h5>
 _________________________________________________________________________________________________________________________
 **Installation Steps-** 
 _________________________________________________________________________________________________________________________
