@@ -1,5 +1,5 @@
 # Real-time Dehazing Software
-Open-source software designed to enhance the visibility of images and videos by reducing atmospheric haze.![background](https://github.com/chhaviGupta986/Dehazing-Software/assets/94625954/e5c90aaf-4a9c-4fc4-95bc-54f84f554e43)<h3>
+Open-source software designed to enhance the visibility of images and videos by reducing atmospheric haze.![background](https://github.com/chhaviGupta986/Dehazing-Software/assets/94625954/e5c90aaf-4a9c-4fc4-95bc-54f84f554e43)<h5>
 _________________________________________________________________________________________________________________________
 **Installation Steps-** 
 _________________________________________________________________________________________________________________________
@@ -25,6 +25,6 @@ ________________________________________________________________________________
    11) Choose a location to install the software.
    12) After successful installation, you're ready to use the software!
    13) Launch the software by clicking on the Dehaze.exe application file.
-   14) You'll also find two additional folders: 'assets' and 'hazed samples.' Keep the assets folder as it is. Feel free to delete the 'hazed samples' folder; it contains sample images/videos for demonstration purposes.</h3>
+   14) You'll also find two additional folders: 'assets' and 'hazed samples.' Keep the assets folder as it is. Feel free to delete the 'hazed samples' folder; it contains sample images/videos for demonstration purposes.</h5>
        
   
