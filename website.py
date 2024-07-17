@@ -66,54 +66,6 @@ def dehaze_video(file_buffer):
     else:
         st.error("No frames were processed from the video.")
 
-
-# Assuming dehazing_algorithm has a dehaze_frame function
-
-def select_realtime_source():
-    st.title("Select Input Source")
-
-    sources = ["Camera", "USB Camera1", "USB Camera2", "IP Webcam"]
-    selected_source = st.selectbox("Select Input Source", sources, index=0, key="source_selectbox")
-
-    if selected_source == "IP Webcam":
-        ip_url = st.text_input("Enter IP Webcam URL", value="http://ip:port or rtsp://ip:port", key="ip_url_input")
-        if st.button("Start Realtime Dehazing", key="start_dehazing_ip"):
-            start_realtime_dehazing(ip_url)
-    else:
-        source_index = sources.index(selected_source)
-        if st.button("Start Realtime Dehazing", key="start_dehazing_source"):
-            start_realtime_dehazing(source_index)
-
-def start_realtime_dehazing(param):
-    if isinstance(param, str):
-        capture = cv2.VideoCapture(param)
-    else:
-        capture = cv2.VideoCapture(param)
-
-    if not capture.isOpened():
-        st.error("Error: Could not open Video Stream. Try a different URL or protocol.")
-        return
-
-    skip_frames = 1
-    stframe = st.empty()
-
-    stpbtn=st.button("Stop", key=f"stop_dehazing_loop")
-    while True:
-        frame = None
-        for _ in range(skip_frames):
-            success, frame = capture.read()
-            if not success:
-                break
-        
-        if frame is not None:
-            dehazed_frame = alg.dehaze_frame(frame, 5, n=8)*255
-            dehazed_frame = dehazed_frame.astype(np.uint8)
-            frame_rgb = cv2.cvtColor(dehazed_frame, cv2.COLOR_BGR2RGB)
-            stframe.image(frame_rgb)
-        if stpbtn:
-            break
-
-    capture.release()
 st.set_page_config(page_title="Dehazing App", page_icon="🌫️", layout="wide")
 st.title("Dehazing System")
 
@@ -142,7 +94,9 @@ elif app_mode == "Upload Video":
 elif app_mode == "Realtime Dehazing":
     st.subheader("Realtime Dehazing")
     # dehaze_realtime()
-    select_realtime_source()
+    st.write("For realtime dehazing, please download our desktop application:")
+    st.markdown("[Download Desktop App](https://github.com/chhaviGupta986/Dehazing-Software/releases/tag/v1.0.0)")
+
 
 st.markdown("""
     <style>
