@@ -7,6 +7,7 @@ from tkinter import *
 from tkinter import Tk, Canvas, PhotoImage, Label, Button, Toplevel, filedialog, messagebox
 from PIL import Image, ImageTk
 import numpy as np
+from tkinter import font as tkFont
 
 if getattr(sys, 'frozen', False) and hasattr(sys, '_MEIPASS'):
     # Running as a PyInstaller bundle
@@ -17,7 +18,9 @@ else:
 class App:
     bgi = None
     open_window_count = 0
+    
     def __init__(self, master):
+        self.font = tkFont.Font(family='Courier', weight="bold")
         App.open_window_count += 1
         self.master = master
         self.master.title("Dehazing App")
@@ -37,15 +40,15 @@ class App:
             pass
 
 
-        welcome_label = Label(self.master, text="Welcome to Dehazing System", font=("Helvetica", 24))
-        welcome_label.grid(row=1, column=0, pady=20)
+        welcome_label = Label(self.master, text="Welcome to Dehazing System", font=(self.font, 24),bg="white")
+        welcome_label.grid(row=1, column=0, pady=20,sticky="nsew")
 
         self.upload_image_button = Button(self.master, text="Upload Image", command=self.upload_image)
         self.upload_video_button = Button(self.master, text="Upload Video", command=self.upload_video)
         self.start_realtime_button = Button(self.master, text="Start Realtime Dehazing", command=self.select_realtime_source)
-        self.upload_image_button.grid(row=2, column=0, pady=10)
-        self.upload_video_button.grid(row=3, column=0, pady=10)
-        self.start_realtime_button.grid(row=4, column=0, pady=10)
+        self.upload_image_button.grid(row=2, column=0, pady=10,sticky="nsew")
+        self.upload_video_button.grid(row=3, column=0, pady=10,sticky="nsew")
+        self.start_realtime_button.grid(row=4, column=0, pady=10,sticky="nsew")
 
         self.master.protocol("WM_DELETE_WINDOW", self.on_close)
         self.master.grid_rowconfigure(0, weight=1)
@@ -66,7 +69,7 @@ class App:
             pass
         
         self.option_window.title(f"Option: {option}")
-        self.option_window.configure(bg="red")
+        self.option_window.configure(bg="white")
         back_button = Button(self.option_window, text="Back to Homepage", command=self.back_to_homepage)
         back_button.pack(pady=10)
     
@@ -77,7 +80,7 @@ class App:
         
     def upload_image(self):
         self.create_option_window("Upload Image")
-        upload_image_label = Label(self.option_window, text="Upload Image to be Dehazed", font=("Helvetica", 18))
+        upload_image_label = Label(self.option_window, text="Upload Image to be Dehazed", font=(self.font, 18),bg="white")
         upload_image_label.pack(pady=10)
         upload_button = Button(self.option_window, text="Upload Image", command=self.choose_image)
         upload_button.pack(pady=10)
@@ -106,30 +109,30 @@ class App:
         if hasattr(self, 'original_canvas'):
             self.original_canvas.destroy()
 
-        self.original_canvas = Canvas(self.option_window, width=screen_width // 2, height=screen_height,bg="red")
+        self.original_canvas = Canvas(self.option_window, width=screen_width // 2, height=screen_height,bg="white")
         self.original_canvas.pack(side="left", fill="both", expand=True)
 
         self.original_canvas.create_image(0, 0, anchor="nw", image=original_photo)
         self.original_canvas.image = original_photo
 
-        original_label = Label(self.option_window, text="Original Image")
+        original_label = Label(self.option_window, text="Original Image",bg="white")
         original_label.place(x=screen_width // 7, y=screen_height // 5)
 
         if hasattr(self, 'dehazed_canvas'):
             self.dehazed_canvas.destroy()
 
-        self.dehazed_canvas = Canvas(self.option_window, width=screen_width // 2, height=screen_height,bg="red")
+        self.dehazed_canvas = Canvas(self.option_window, width=screen_width // 2, height=screen_height,bg="white")
         self.dehazed_canvas.pack(side="right", fill="both", expand=True)
         self.dehazed_canvas.create_image(0, 0, anchor="nw", image=dehazed_photo)
         self.dehazed_canvas.image = dehazed_photo
     
-        dehazed_label = Label(self.option_window, text="Dehazed Image")
+        dehazed_label = Label(self.option_window, text="Dehazed Image",bg="white")
         dehazed_label.place(x=5 * screen_width // 7, y=screen_height // 5)
 
-        label_button_frame = Frame(self.option_window, bg="red")
+        label_button_frame = Frame(self.option_window, bg="white")
         label_button_frame.pack(pady=10)
 
-        time_label = Label(label_button_frame, text=f"Time taken to dehaze: {total_time} milliseconds")
+        time_label = Label(label_button_frame, text=f"Time taken to dehaze: {total_time} milliseconds",bg="white")
         time_label.grid(row=0, column=0, pady=(0, 10))
 
         download_button = Button(label_button_frame, text="Download Dehazed Image", command=lambda: self.download_dehazed(output))
@@ -148,7 +151,7 @@ class App:
     t=None
     def upload_video(self):
         self.create_option_window("Upload Video")
-        upload_video_label = Label(self.option_window, text="Upload Video to be Dehazed", font=("Helvetica", 18))
+        upload_video_label = Label(self.option_window, text="Upload Video to be Dehazed", font=(self.font, 18),bg="white")
         upload_video_label.pack(pady=10)
 
         self.upload_button = Button(self.option_window, text="Upload Video", command=self.choose_video)
@@ -157,7 +160,7 @@ class App:
 
     def choose_video(self):
         file_path = filedialog.askopenfilename(title="Select a Video", filetypes=[("Video Files", "*.mp4;*.avi;*.mkv")])
-        button_frame = Frame(self.option_window,bg="red")
+        button_frame = Frame(self.option_window,bg="white")
         button_frame.pack(pady=10)
         
         self.option_window.attributes("-topmost", True)
@@ -169,7 +172,7 @@ class App:
                 # extract frames from video
                 capture = cv2.VideoCapture(file_path) #change here for input location
                 #REALTIME DEHAZING
-                skip=30
+                skip=1
                 while True:
                     for i in range(skip):
                         success, frame = capture.read()
@@ -216,7 +219,7 @@ class App:
         self.create_option_window("Select Input Source")
         self.selected_source = StringVar()
         self.selected_source.set("Camera")  #Set default value
-        title_label = Label(self.option_window, text="Select Input Source", font=("Helvetica", 18))
+        title_label = Label(self.option_window, text="Select Input Source", font=(self.font, 18),bg="white")
         title_label.pack(pady=10)
         sources = ["Camera", "USB Camera1","USB Camera2", "IP Webcam"]
         self.sources=sources
@@ -224,7 +227,7 @@ class App:
         source_menu = OptionMenu(self.option_window, self.selected_source, *sources)
         source_menu.pack(pady=10)
         self.selected_source.set("Camera")
-        q = Label(self.option_window, text=f"Press Q to stop real-time dehazing")
+        q = Label(self.option_window, text=f"Press Q to stop real-time dehazing",bg="white")
         q.pack(pady=10)
         start_button = Button(self.option_window, text="Start Realtime Dehazing", command=self.set_param)
         start_button.pack(pady=10)
@@ -241,9 +244,9 @@ class App:
                 ip_webcam_window.iconbitmap("assets/icon.ico")
             except Exception as e:
                 pass
-            url_label = Label(ip_webcam_window, text="Enter IP Webcam URL:")
+            url_label = Label(ip_webcam_window, text="Enter IP Webcam URL:",bg="white")
             url_label.pack(pady=10)
-            example = Label(ip_webcam_window, text="Your URL might look like : http://ip:port, https://ip:port, rtsp://ip:port/h264_ulaw.sdp or rtsp://ip:port/h264_pcm.sdp")
+            example = Label(ip_webcam_window, text="Your URL might look like : http://ip:port, https://ip:port, rtsp://ip:port/h264_ulaw.sdp or rtsp://ip:port/h264_pcm.sdp",bg="white")
             example.pack(pady=20)
             url_entry = Entry(ip_webcam_window,width=40)
             url_entry.pack(pady=10)
@@ -278,7 +281,8 @@ class App:
 if __name__ == "__main__":
     root = Tk()
     app = App(root)
-    root.config(bg="black")
+    root.config(bg="white")
+    
     try:
         root.iconbitmap("assets/icon.ico")
     except Exception as e:
