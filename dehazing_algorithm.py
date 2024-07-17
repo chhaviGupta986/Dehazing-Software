@@ -1,6 +1,5 @@
 import cv2
 import math
-from tkinter import *
 import numpy as np
 
 #DARK CHANNEL 
