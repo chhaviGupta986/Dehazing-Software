@@ -10,10 +10,10 @@ ________________________________________________________________________________
 
    5) If the download is blocked, you might see a message similar to this:
       - <a>![image](https://github.com/chhaviGupta986/Dehazing-Software/assets/94625954/2bd975cd-17b4-4b49-bd56-c40ac9392ae6) </a>
-      - Click on it, and you'll receive a message like this :')
+      - Click on it, and you'll receive a message like this:
       - <a>![image](https://github.com/chhaviGupta986/Dehazing-Software/assets/94625954/d96a558a-efaa-4db4-8a38-615a2286c7a5)</a>
    6) Click on "download file."
-   7) Alternatively, you may encounter a message like this :')
+   7) Alternatively, you may encounter a message like this:
       - <a>![Screenshot (183)](https://github.com/chhaviGupta986/Dehazing-Software/assets/94625954/460424bb-5694-493b-8cb8-20ed1b74aca0)</a>
       - Click on the first option and allow the download to proceed. You can adjust these settings later.
    8) Once the download is complete, run the installer.exe.
