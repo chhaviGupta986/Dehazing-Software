@@ -1,4 +1,8 @@
 # Real-time Dehazing Software
+## Website Demo
+https://github.com/user-attachments/assets/5c0f7aaf-7859-4c13-9f1a-a9fdee70c946
+## Desktop Application Demo
+https://github.com/user-attachments/assets/81218532-fc13-4477-96a2-836763db696c
 ## Installation Steps
 1. Navigate to the [Releases section](https://github.com/chhaviGupta986/Dehazing-Software/releases/tag/v1.0.0) of this repository.
 2. Scroll down to the Assets section.
